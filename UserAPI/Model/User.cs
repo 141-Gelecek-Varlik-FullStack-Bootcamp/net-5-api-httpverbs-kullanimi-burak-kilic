@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Model.UserAPI
 {
-    public class Users 
+    public class User
     {
         [Required(ErrorMessage = "{0} cannot be empty")]
         public int Id { get; set; }
