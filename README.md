@@ -11,6 +11,14 @@
   "Id" : 3,
   "Username" : "new user",
   "Password" : "password123",
-  "fullName":"New User"
+  "FullName":"New User"
 } 
 GET : https://localhost:5001/api/Users](https://github.com/141-Gelecek-Varlik-FullStack-Bootcamp/net-5-api-httpverbs-kullanimi-burak-kilic/blob/main/Postman%20Responses/httpget%20post%20newuser%20-%20response.json)
+[PUT:
+{
+  "Id":3,
+  "Username":"updatednewuser",
+  "Password":"newpassword123",
+  "FullName":"Updated New User"
+}
+GET : https://localhost:5001/api/Users/3](https://github.com/141-Gelecek-Varlik-FullStack-Bootcamp/net-5-api-httpverbs-kullanimi-burak-kilic/blob/main/Postman%20Responses/httpget%20put%20updateduser%20response.json)
