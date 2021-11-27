@@ -8,6 +8,9 @@ namespace UserAPI.Controllers
     [ApiController]
     [Route("api/[controller]s")] // api/Users
 
+
+
+    //Statik kullanıcı listesi oluştur
     public class UserController : ControllerBase
     {
         private static List<User> UserList = new List<User>()
@@ -25,23 +28,24 @@ namespace UserAPI.Controllers
                 FullName = "John Doe"
             }
         };
-
-        [HttpGet]
+        
+        //Kullanıcı listesini id'ye göre sıralı şekilde listele
+        [HttpGet] // https:localhost:5001/api/Users
         public List<User> GetUsers()
         {
             var userList = UserList.OrderBy( user => user.Id).ToList();
             return userList;
         }
-
-        [HttpGet("{id}")]
+        //Sadece girilen id'ye ait kullanıcı bilgisini yolla
+        [HttpGet("{id}")] // https:localhost:5001/api/Users/1 
         public User GetUserById(int id)
         {
             var userInfo = UserList.Where( user => user.Id == id).SingleOrDefault();
             return userInfo;
         }
 
+        //Girilen kullanıcı adı bilgisi statik kullanıcı listesinde yok ise ekle
         [HttpPost]
-
         public IActionResult AddUser([FromBody] User newUser)
         {
             var user = UserList.SingleOrDefault( user => user.Username == newUser.Username);
@@ -52,7 +56,9 @@ namespace UserAPI.Controllers
             UserList.Add(newUser);
             return Ok();
         }
-
+        
+        
+        //Girilen id'ye göre kullanıcı bilgilerini güncelle
         [HttpPut("{id}")]
         public IActionResult UpdateUser(int id, [FromBody] User updatedUser)
         {
@@ -69,7 +75,7 @@ namespace UserAPI.Controllers
 
             return Ok();
         }
-
+        //Girilen id'ye göre kullanıcı bilgilerini sil
         [HttpDelete("{id}")]
         public IActionResult DeleteUser(int id)
         {
